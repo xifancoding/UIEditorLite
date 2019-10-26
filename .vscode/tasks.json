@@ -1,34 +1,62 @@
 {
-    "version": "0.1.0",
-    "command": "egret",
-    "isShellCommand": true,
-    "suppressTaskName": true,
-    "tasks": [
-        {
-            "taskName": "build",
-            "showOutput": "always",
-            "args": [
-                "build",
-                "-sourcemap"
-            ],
-            "problemMatcher": "$tsc"
+    "version": "2.0.0",
+    "tasks": [{
+        "label": "build",
+        "command": "egret",
+        "type": "shell",
+        "presentation": {
+            "reveal": "always",
+            "panel": "shared",
+            "showReuseMessage": true,
+            "clear": false
         },
-        {
-            "taskName": "clean",
-            "showOutput": "always",
-            "args": [
-                "build",
-                "-e"
-            ],
-            "problemMatcher": "$tsc"
+        "args": [
+            "build",
+            "-sourcemap"
+        ],
+        "problemMatcher": "$tsc"
+    }, {
+        "label": "clean",
+        "command": "egret",
+        "type": "shell",
+        "presentation": {
+            "reveal": "always",
+            "panel": "shared",
+            "showReuseMessage": true,
+            "clear": false
         },
-        {
-            "taskName": "publish",
-            "showOutput": "always",
-            "args": [
-                "publish"
-            ],
-            "problemMatcher": "$tsc"
-        }
-    ]
+        "args": [
+            "build",
+            "-e"
+        ],
+        "problemMatcher": "$tsc"
+    }, {
+        "label": "publish",
+        "command": "egret",
+        "type": "shell",
+        "presentation": {
+            "reveal": "always",
+            "panel": "shared",
+            "showReuseMessage": true,
+            "clear": false
+        },
+        "args": [
+            "publish"
+        ],
+        "problemMatcher": "$tsc"
+    }, {
+        "label": "runEgretServer",
+        "command": "egret",
+        "type": "shell",
+        "presentation": {
+            "reveal": "always",
+            "panel": "shared",
+            "showReuseMessage": true,
+            "clear": false
+        },
+        "args": [
+            "run", "-a"
+        ],
+        "problemMatcher": "$tsc"
+    }]
 }

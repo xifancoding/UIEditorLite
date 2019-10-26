@@ -1,29 +1,19 @@
 {
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"name": "Launch Wing Player",
-			"type": "chrome",
-			"request": "launch",
-			"file": "index.html",
-			"runtimeExecutable": "${execPath}",
-			"useBuildInServer": true,
-			"sourceMaps": true,
-			"webRoot": "${workspaceRoot}",
-			"preLaunchTask":"build",
-			"port":5044
-		},
-		{
-			"name": "Launch Chrome",
-			"type": "chrome",
-			"request": "launch",
-			"file": "index.html",
-			"useBuildInServer": true,
-			"sourceMaps": true,
-			"webRoot": "${workspaceRoot}",
-			"preLaunchTask":"build",
-			"userDataDir":"${tmpdir}",
-			"port":5044
-		}
-	]
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [{
+        "name": "Launch Chrome",
+        "type": "chrome",
+        "request": "launch",
+        // "file": "index.html",
+        "url": "http://192.168.1.33:3001/index.html",
+        "sourceMaps": true,
+        "webRoot": "${workspaceRoot}",
+        "preLaunchTask": "runEgretServer",
+        // "preLaunchTask": "build",            //neet egret start server / run  first
+        "userDataDir": "${tmpdir}",
+        "port": 5433
+    }]
 }
