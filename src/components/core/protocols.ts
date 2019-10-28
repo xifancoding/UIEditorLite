@@ -3,10 +3,10 @@ namespace comp {
     /**
      * @description   Image
      * @author xfy
-     * @interface IImage
-     * @extends {IDisplay}
+    *  @interface Image
+     * @extends {Display}
      */
-    export interface IImage<T> extends IDisplay {
+    export interface Image<T> extends Display {
         //url
         url: string;
         //texture
@@ -17,10 +17,10 @@ namespace comp {
     /**
      * @description  Lable
      * @author xfy
-     * @interface ILable
-     * @extends {IDisplay}
+     * @interface Lable
+     * @extends {Display}
      */
-    export interface ILable extends IDisplay {
+    export interface Lable extends Display {
         //text
         text: string;
     }
@@ -29,10 +29,10 @@ namespace comp {
     /**
      * @description   Button
      * @author xfy
-     * @interface IButton
-     * @extends {IDisplay}
+     * @interface Button
+     * @extends {Display}
      */
-    export interface IButton extends IDisplay {
+    export interface Button extends Display {
         //label
         label: string;
         //skin

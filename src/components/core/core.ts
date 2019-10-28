@@ -4,9 +4,9 @@ namespace comp {
     /**
      * @description DisplayObject
      * @author xfy
-     * @interface IDisplay
+    *  @interface Display
      */
-    export interface IDisplay {
+    export interface Display {
         //x
         readonly x: number;
         //y
@@ -17,29 +17,29 @@ namespace comp {
     /**
      * @description Container display 
      * @author xfy
-     * @interface IContainer
-     * @extends {IDisplayObject}
+     * @interface Container
+     * @extends {Display}
      */
-    export interface IContainer extends IDisplay {
+    export interface Container extends Display {
         
         /**
          * @description     add child display object 
          * @author xfy
-         * @param {IDisplay} child
+         * @param {Display} child
          * @param {number} index
          * @returns {this}
          * @memberof IContainer
          */
-        addChildAt(child: IDisplay, index: number): this;
+        addChildAt(child: Display, index: number): this;
     
         
         /**
          * @description     remove child by index
          * @author xfy
          * @param {number} index
-         * @returns {IDisplay}
+         * @returns {Display}
          * @memberof IContainer
          */
-        removeChildAt(index: number): IDisplay;
+        removeChildAt(index: number): Display;
     }
 }
