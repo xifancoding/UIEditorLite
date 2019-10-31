@@ -1,17 +1,3 @@
 
-bin-debug/AssetAdapter.js
-bin-debug/AssetAdapter.js.map
-bin-debug/common/test.js
-bin-debug/common/test.js.map
-bin-debug/components/test.js
-bin-debug/components/test.js.map
-bin-debug/editor/test.js
-bin-debug/editor/test.js.map
-bin-debug/LoadingUI.js
-bin-debug/LoadingUI.js.map
-bin-debug/Main.js
-bin-debug/Main.js.map
-bin-debug/Platform.js
-bin-debug/Platform.js.map
-bin-debug/ThemeAdapter.js
-bin-debug/ThemeAdapter.js.map
+bin-debug/*
+manifest.json
