@@ -30,7 +30,7 @@ namespace comp {
          * @returns {this}
          * @memberof IContainer
          */
-        addChildAt(child: Display, index: number): this;
+        addChildAt(child: Display, index: number): Display;
     
         
         /**
