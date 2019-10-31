@@ -8,11 +8,11 @@
         "type": "chrome",
         "request": "launch",
         // "file": "index.html",
-        "url": "http://192.168.1.33:3001/index.html",
+        "url": "http://192.168.1.33:3000/index.html",
         "sourceMaps": true,
         "webRoot": "${workspaceRoot}",
-        "preLaunchTask": "runEgretServer",
-        // "preLaunchTask": "build",            //neet egret start server / run  first
+        // "preLaunchTask": "runEgretServer",
+        "preLaunchTask": "build",            //neet egret start server / run  first
         "userDataDir": "${tmpdir}",
         "port": 5433
     }]
