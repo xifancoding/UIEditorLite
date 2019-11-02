@@ -43,6 +43,9 @@ namespace fp {
 
         //of
         public static of<T>(value: T): Maybe<T> {
+            if(value === null || value === undefined) {
+                return None;
+            }
             return new Just(value);
         }
 
