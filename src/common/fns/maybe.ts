@@ -5,37 +5,30 @@
 
 // None
 namespace fp {
-
+    
     //valueKey
     export const valueKey = Symbol("__@@value");
-
+    
     //Nothing<T>
-    export type Nothing = typeof None;
-
+    export type Nothing = typeof nil;
+    
     //is none
-    export const isNoting = (test: any): test is Nothing => {
-        return test === None;
+    export const isNone = (test: any): boolean => {
+        return test === nil;
     }
     
-     //None
-    export class None {
-        //of
-        public static of = <T>(): Maybe<T> => None;
-
+    //nil
+    export const nil: Maybe<any> = {
         //unsafeValue
-        public static unsafeValue = <T>(): T => null;
-        
+        unsafeValue: () => null,
         //fmap
-        public static fmap = <T, U>(fn: (value: T) => U): Maybe<U> => None;
-
+        map: (fn: (value: any) => any) => nil,
         //ap
-        public static ap = <T, U>(maybe: Maybe<(value: T) => U>): Maybe<U> => None;
-
+        ap: (maybe: Maybe<(value: any) => any>) => nil,
         //flatmap
-        public static flatMap = <T, U>(fn: (value: T) => Maybe<U>): Maybe<U> => None;
-
+        flatMap: (fn: (value: any) => Maybe<any>) => nil,
         //join
-        public static join = <U>(): Maybe<U> => None;
+        join: (): Maybe<any> => nil
     }
 
     //Just
@@ -44,7 +37,7 @@ namespace fp {
         //of
         public static of<T>(value: T): Maybe<T> {
             if(value === null || value === undefined) {
-                return None;
+                return nil;
             }
             return new Just(value);
         }
@@ -60,16 +53,16 @@ namespace fp {
         }
 
         //fmap
-        public fmap<U>(fn: (value: T) => U): Maybe<U> {
+        public map<U>(fn: (value: T) => U): Maybe<U> {
             return Just.of(fn(this.unsafeValue()));
         }
 
         //ap
         public ap<U>(maybe: Maybe<(value: T) => U>): Maybe<U> {
-            if(isNoting(maybe)) {
-                return None;
+            if(isNone(maybe)) {
+                return nil;
             }
-            return this.fmap(maybe.unsafeValue());
+            return this.map(maybe.unsafeValue());
         }
 
         //flatMap
@@ -84,5 +77,4 @@ namespace fp {
 
     }
 }
-
 

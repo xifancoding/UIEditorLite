@@ -21,7 +21,9 @@ namespace snippet {
         */
         export const methodTempl = (name: string, params: string = "", returnType?: string) => (
             logic: string
-        ) => braceAffix(logic).fmap(block => `${name}(${params})${returnType ? ": " + returnType : ""} ${block}`);
+        ) => fp.Just.of(logic).map(braceAffix).map(prepend(
+            `${name}(${params})${returnType ? ": " + returnType : ""}`
+        ));
     
         /**
         * @description class templete
@@ -31,7 +33,7 @@ namespace snippet {
         */
         export const classTempl = (name: string) => (
             statement: string
-        ) => braceAffix(statement).fmap(block => `class ${name} ${block}`);
+        ) => fp.Just.of(statement).map(braceAffix).map(prepend(`class ${name}`));
     
     
         /**
@@ -42,6 +44,6 @@ namespace snippet {
         */
         export const nsTempl = (name: string) => (
             statement: string
-        ) => braceAffix(statement).fmap(block => `namespace ${name} ${block}`);
+        ) => fp.Just.of(statement).map(braceAffix).map(prepend(`namespace ${name}`));
     }
 }

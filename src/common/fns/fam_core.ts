@@ -11,7 +11,7 @@ namespace fp {
 
     //IFunctor
     export interface IFunctor<T> {
-        fmap<U>(fn: (param: T) => U): Maybe<U>;
+        map<U>(fn: (param: T) => U): Maybe<U>;
     }
 
     //IApplicative

@@ -4,21 +4,21 @@ namespace snippet {
 //============== don't format ==================
 
 //brace templete
-export const braceTemp = (
+export const bracketTemp = (
 `{
     {$statement}
 }`);
 
 //class templete
-export const classTempl = `class {$class} ${braceTemp}`;
+export const classTempl = `class {$class} ${bracketTemp}`;
 
 //namespace templete
 export const nsTempl2= (
 `namespace {$namespace} {
-    ${tabBlock("export " + classTempl)}
+    ${indentBlock("export " + classTempl)}
 }`); 
 //namespace templete
-export const nsTempl = `namespace {$namespace} ${braceTemp.replace("{$statement}", tabBlock(classTempl))}`;
+export const nsTempl = `namespace {$namespace} ${bracketTemp.replace("{$statement}", indentBlock(classTempl))}`;
 
 
 

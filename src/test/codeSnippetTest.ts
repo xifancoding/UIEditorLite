@@ -4,28 +4,20 @@ const testCodeSnippet = () => {
 
     const classTemp = snippet.ts.classTempl("classTest");
 
-    const funcTemp = snippet.ts.methodTempl("funcTest", "a: number, b: number");
+    const funcTemp = snippet.ts.methodTempl("funcTest", "a: number, b: number")("console.log(a, b);").map(snippet.append);
 
 
-    const lg = (value: string) => {
-        console.log(value);
-        return value;
-    }
+    const props1 = snippet.ts.propertyTempl("props", "number").map(snippet.prepend("public ")).map(snippet.newLine)
+    const props2 = snippet.ts.propertyTempl("props2", "string").map(snippet.prepend("protected ")).map(snippet.newLine).map(snippet.append);
+    const props = props1.ap(props2)
 
-    const props = snippet.ts.propertyTempl("props", "number").fmap(snippet.prepend("public ")).fmap(snippet.newLine)
-    .fmap(total => {
-        return snippet.ts.propertyTempl("props2", "string").fmap(snippet.prepend("protected ")).fmap(snippet.newLine).fmap(value => total + value)
-    })
-    
+    props.ap(funcTemp).flatMap(classTemp).flatMap(nsTemp).map(console.log);
 
 
 
-    // console.log(funcTemp("console.log(a+b);").flatMap(classTemp).flatMap(nsTemp).unsafeValue());
-    // console.log(snippet.brace("const a = 10;\nconsole.log(a);").unsafeValue());
-    
-    
 }
 testCodeSnippet();
+
 
 
 

@@ -5,7 +5,7 @@ namespace snippet {
     //enter 
     const Enter = "\n";
 
-    //get tail pattern in consecutive patterns 'pattern(?!pattern)'
+    //get tail pattern in constant patterns 'pattern(?!pattern)'
     const tailPattern = (pattern: string, cacheContext?: true) => {
         const regStr = `${pattern}(?!${pattern})`;
         return new RegExp(!cacheContext ? regStr : `(${regStr})`, "gm");
@@ -22,8 +22,6 @@ namespace snippet {
     // the ahead '\t' of '\t...\t\t\t'
     const AheadTabReg = tailPattern(Tab, true);
 
-
-
     /**
      * @description prepend addition
      * @author xfy
@@ -31,7 +29,7 @@ namespace snippet {
      * @returns {(origin: string) => string}
      */
     export const prepend = (addition: string) => (origin: string) => addition + origin;
-
+    
     /**
      * @description append addition
      * @author xfy
@@ -39,53 +37,44 @@ namespace snippet {
      * @returns {(origin: string) => string}
      */
     export const append = (addition: string) => (origin: string) => origin + addition;
-
+    
     /**
-     * @description new line
-     * @author xfy
-     * @param {string} origin
-     * @returns {string} `${Enter + code}`
+     * @description new line `${Enter + code}`
      */
     export const newLine = prepend(Enter);
 
     /**
-     * @description tab line
-     * @author xfy
-     * @param {string} origin
-     * @returns {string}  `${Tab + code}`
+     * @description tab line `${Tab + code}`
      */
-    export const tabLine = prepend(Tab);
+    export const indentLine = prepend(Tab);
 
     /**
-     * @description tab multiline block
+     * @description indent block
      * @author xfy
      * @param {string} multiline multiline string
      * @returns {string}
      */
-    export const tabBlock = (multiline: string) => multiline.replace(TailEnterReg, `$1${Tab}`);
+    export const indentBlock = (multiline: string) => multiline.replace(TailEnterReg, `$1${Tab}`);
 
     /**
-     * @description recover tab multiline block
+     * @description reindent block
      * @author xfy
      * @param {string} multiline  multiline string
      * @returns {string}
      */
-    export const untabBlock = (multiline: string) => multiline.replace(AheadTabReg, "");
+    export const reindentBlock = (multiline: string) => multiline.replace(AheadTabReg, "");
 
     /**
     * @description affix "{}"
     * @author xfy
     * @param {string} statement
     * @param {boolean} format
-    * @returns {fp.Just<string>} fp.Just.of(`{\n${statement}\n}` | `{${statement}}`);
+    * @returns {string} `{\n${statement}\n}` | `{${statement}}`
     */
-    export const braceAffix = (statement: string, format: boolean = true) => {
-        if(!format) {
-            return fp.Just.of(`{${statement}}`);
-        }
-        return fp.Just.of(statement).fmap(newLine).fmap(tabBlock).fmap(block => `{${block + newLine("}")}`);
-    }
-    
+    export const braceAffix = (statement: string) => {
+        const fmtStatement = statement.indexOf(Enter) === 0 ? statement : newLine(statement);
+        return `{${indentBlock(fmtStatement)}${newLine("}")}`;
+    };
 }
 
 
