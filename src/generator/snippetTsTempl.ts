@@ -1,15 +1,22 @@
 namespace snippet {
     //type script snippet 
     export namespace ts {
+
+        //prop temp type
+        type PropTemp = {
+            name: string;
+            type: string;
+            modify?: "public" | "protected" | "private";
+            value?:string;
+        };
+
         /**
         * @description property templete
         * @author xfy
-        * @param {string} name
-        * @param {string} type
-        * @param {string} value
+        * @param {PropTemp} props
         * @returns {fp.Just<string>}  fp.Just<string>;
         */
-        export const propertyTempl = (name: string, type: string, value: string = "null") => fp.Just.of(`${name}: ${type} = ${value}`);
+        export const propertyTempl = (...props: PropTemp[]) => fp.Just.of(props.reduce((p, c) => p + newLine(`${c.modify ? c.modify + " " : ""}${c.name}: ${c.type} = ${c.value};`), newLine("")));
     
         /**
         * @description method templete
