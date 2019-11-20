@@ -1,19 +1,27 @@
 const testCodeSnippet = () => {
 
-    const nsTemp = snippet.ts.nsTempl("nsTest");
+    
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(`<DisplayObjectContainer id="MyClass" ns="MyNamespace">
+    <Image id="img" value="100"/>
+    <Lable id="lbl" modifier="public"/>
+    <Button id="btn" modifier="private"/>
+    </DisplayObjectContainer>`, "application/xml");
 
-    const classTemp = snippet.ts.classTempl("classTest");
+    const lg = (v: string) => {
+        console.log(v); 
+        return v;
+    }
 
-    const funcTemp = snippet.ts.methodTempl("funcTest", "a: number, b: number")("console.log(a, b);").map(snippet.append);
+
+    snippet.ts.xml2TS(xml).map(lg);
 
 
-     const props = snippet.ts.propertyTempl({name: "prop", type: "number", value: "10"}, {name: "prop2", type: "string", modify: "public"}).map(v => {
-         console.log(v);
-         return v;
-        });
-    props.ap(funcTemp).flatMap(classTemp).flatMap(nsTemp).map(console.log);
 }
 testCodeSnippet();
+
+
+
 
 
 

@@ -1,9 +1,12 @@
 namespace snippet {
 
     //tab    
-    const Tab = "\t";        //&nbsp;&nbsp;&nbsp;&nbsp; 
+    const Tab = "\t";
     //enter 
     const Enter = "\n";
+
+    //brace content
+    const braceContentPattern = /(?<=\{)[^\{\}]+(?=\})/gm;
 
     //get tail pattern in constant patterns 'pattern(?!pattern)'
     const tailPattern = (pattern: string, cacheContext?: true) => {
@@ -75,6 +78,16 @@ namespace snippet {
         const fmtStatement = statement.indexOf(Enter) === 0 ? statement : newLine(statement);
         return `{${indentBlock(fmtStatement)}${newLine("}")}`;
     };
+
+    /**
+    * @description prefix "private" | "protected" | "public"
+    * @author xfy
+    * @param {string} statement
+    * @param {"private" | "protected" | "public"} modifier
+    * @returns {string} "private" | "protected" | "public" statement
+    */
+    export const prefixModifier = (statement: string, modifier?: "private" | "protected" | "public") => `${modifier ? modifier + " " : ""}${statement}`;
+
 }
 
 
