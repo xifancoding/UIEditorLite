@@ -56,36 +56,64 @@ namespace snippet {
 
         //=================================
 
+        /**
+         * @description display to xml
+         * @author xfy
+         * @param {comp.Display} display
+         * @returns {string}
+         */
         export const display2XML = (display: comp.Display): XMLDocument => {
+
             return null;
         }
 
-        const xml2Property = (element: Element) => snippet.newLine(
-            snippet.ts.propertyTempl(
-                element.getAttribute("id"),
-                element.tagName, element.getAttribute("value"),
-                element.getAttribute("modifier") as "public" | "protected" | "private"
-            )
-        );
+        /**
+         * @description xml element to propty lines
+         * @author xfy
+         * @param {Element} element
+         * @returns {string}
+         */
+        const xml2Properties = (element: Element) => {
+            let result = "";
+            const pName = element.getAttribute(KeyMap.id);
+            if(pName) {
+                result += snippet.newLine(
+                    snippet.ts.propertyTempl(
+                        element.getAttribute(KeyMap.id),
+                        element.tagName, 
+                        element.getAttribute(KeyMap.value),
+                        element.getAttribute(KeyMap.modifier) as "public" | "protected" | "private"
+                    )
+                );
+            }
 
-        export const xml2TS = (data: XMLDocument): fp.Just<string> => {
-            const root = data.children[0];
-
-            const initText = snippet.newLine(snippet.ts.propertyTempl("root", root.tagName));
-
-            const propLines = Array.from(root.children).reduce((text, node) => `${text}${xml2Property(node)}`, initText);
-
-            
-            const result = fp.Just.of(propLines)
-                .map(snippet.ts.classTempl(root.getAttribute("id")))
-                .map(snippet.ts.nsTempl(root.getAttribute("ns")));
-
+            if(element.children.length > 0) {
+                result = Array.from(element.children).reduce((text, ele) => `${text}${xml2Properties(ele)}`, result);
+            }
 
             return result;
         }
 
+        /**
+         * @description xml element to propty lines
+         * @author xfy
+         * @param {XMLDocument} data
+         * @param {string} className
+         * @param {string} nsName
+         * @returns {string}
+         */
+        export const xml2TS = (data: XMLDocument, className: string, nsName?: string): fp.Just<string> => {
+            const root = data.children[0];
+            let propLines = xml2Properties(root);
+            if(root.getAttribute(KeyMap.id) !== KeyMap.root) {
+                propLines = newLine(propertyTempl(KeyMap.root, root.tagName)) + propLines;
+            }
+            const result = fp.Just.of(propLines)
+                .map(snippet.ts.classTempl(className))
+                .map(snippet.ts.nsTempl(nsName));
+            return result;
+        };
+
         
     }
 }
-
-

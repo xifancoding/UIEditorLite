@@ -2,7 +2,6 @@
     "compilerOptions": {
         "target": "es5",
         "outDir": "bin-debug",
-        "module": "commonjs",
         "sourceMap": true,
         "experimentalDecorators": true,
         "lib": [

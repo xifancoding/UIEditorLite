@@ -2,10 +2,23 @@ const testCodeSnippet = () => {
 
     
     const parser = new DOMParser();
-    const xml = parser.parseFromString(`<DisplayObjectContainer id="MyClass" ns="MyNamespace">
+    const xml = parser.parseFromString(`<DisplayObjectContainer>
     <Image id="img" value="100"/>
     <Lable id="lbl" modifier="public"/>
     <Button id="btn" modifier="private"/>
+
+    <DisplayObjectContainer>
+        <Image/>
+        <Lable id="lbl2" modifier="public"/>
+        <Button/>
+        <DisplayObjectContainer id="box">
+            <Image  id="img2"/>
+            <Lable/>
+            <Button/>
+        </DisplayObjectContainer>
+    </DisplayObjectContainer>
+
+
     </DisplayObjectContainer>`, "application/xml");
 
     const lg = (v: string) => {
@@ -14,7 +27,7 @@ const testCodeSnippet = () => {
     }
 
 
-    snippet.ts.xml2TS(xml).map(lg);
+    snippet.ts.xml2TS(xml, "My_Class", "My_Namespace").map(lg);
 
 
 }

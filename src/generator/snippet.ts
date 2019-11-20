@@ -6,7 +6,8 @@ namespace snippet {
     const Enter = "\n";
 
     //brace content
-    const braceContentPattern = /(?<=\{)[^\{\}]+(?=\})/gm;
+    // const braceContentPattern = new RegExp("(?<=\{)[^\{\}]+(?=\})", "gm");
+
 
     //get tail pattern in constant patterns 'pattern(?!pattern)'
     const tailPattern = (pattern: string, cacheContext?: true) => {
@@ -86,7 +87,7 @@ namespace snippet {
     * @param {"private" | "protected" | "public"} modifier
     * @returns {string} "private" | "protected" | "public" statement
     */
-    export const prefixModifier = (statement: string, modifier?: "private" | "protected" | "public") => `${modifier ? modifier + " " : ""}${statement}`;
+    export const prefixModifier = (statement: string, modifier?: "private" | "protected" | "public") => `${modifier || "public"} ${statement}`;
 
 }
 

@@ -9,7 +9,7 @@
 		"libs/modules/promise/promise.js"
 	],
 	"game": [
-		"bin-debug/components/core/core.js",
+		"bin-debug/components/core/mapping.js",
 		"bin-debug/AssetAdapter.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
@@ -18,11 +18,12 @@
 		"bin-debug/common/fns/fam_core.js",
 		"bin-debug/common/fns/fns.js",
 		"bin-debug/common/fns/maybe.js",
+		"bin-debug/components/core/core.js",
 		"bin-debug/LoadingUI.js",
-		"bin-debug/components/core/mapping.js",
 		"bin-debug/components/core/protocols.js",
 		"bin-debug/egret/components/Mapping.js",
 		"bin-debug/generator/snippet.js",
+		"bin-debug/generator/snippetCongfig.js",
 		"bin-debug/generator/snippetTsTempl.js",
 		"bin-debug/generator/core/IViewEntity.js",
 		"bin-debug/generator/core/IViewOwner.js",
