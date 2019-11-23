@@ -115,5 +115,29 @@ namespace snippet {
         };
 
         
+
+
+        /**
+     * @description add class
+     * @author xfy
+     * @param {string} name class name
+     * @param {true} _export preffix "export"
+     * @returns {(Snippet[] | Snippet) => Snippet[]}
+     */
+        export const addClass = (name: string, _export?: true) => (target: Snippet | Snippet[]) => toSnippet(
+            `${_export && "export " || ""}class ${name}{${ChildrenReg.source}}`,
+            target instanceof Array ? target : [target]
+        );
+
+        /**
+         * @description add namespace
+         * @author xfy
+         * @param {string} name namespace name
+         * @returns {(Snippet[] | Snippet) => Snippet[]}
+         */
+        export const addNamespace = (name: string) => (target: Snippet | Snippet[]) => toSnippet(
+            `namespace ${name}{${ChildrenReg.source}}`,
+            target instanceof Array ? target : [target]
+        );
     }
 }
