@@ -1,4 +1,6 @@
 
 bin-debug/*
 node_modules/*
+typings/*
 manifest.json
+typings.json
