@@ -25,7 +25,8 @@ namespace snippet {
     /**
      * @description new line `${Enter + code}`
      */
-    export const newLine = (code: string) => `${Enter}${code}`
+    export const newLine = (code: string) => `${code}`
+    // export const newLine = (code: string) => `${Enter}${code}`
 
     /**
      * @description indent block
