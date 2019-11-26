@@ -9,8 +9,8 @@
 		"libs/modules/promise/promise.js"
 	],
 	"game": [
-		"bin-debug/components/core/mapping.js",
-		"bin-debug/AssetAdapter.js",
+		"bin-debug/libs/modules/assetsmanager/assetsmanager.js",
+		"bin-debug/generator/snippetCongfig.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ThemeAdapter.js",
@@ -19,16 +19,23 @@
 		"bin-debug/common/fns/fns.js",
 		"bin-debug/common/fns/maybe.js",
 		"bin-debug/components/core/core.js",
-		"bin-debug/LoadingUI.js",
+		"bin-debug/components/core/mapping.js",
 		"bin-debug/components/core/protocols.js",
 		"bin-debug/egret/components/Mapping.js",
 		"bin-debug/generator/snippet.js",
-		"bin-debug/generator/snippetCongfig.js",
+		"bin-debug/LoadingUI.js",
 		"bin-debug/generator/snippetFormat.js",
 		"bin-debug/generator/snippetTsTempl.js",
 		"bin-debug/generator/core/IViewEntity.js",
 		"bin-debug/generator/core/IViewOwner.js",
 		"bin-debug/test/codeSnippetTest.js",
-		"bin-debug/test/compTest.js"
+		"bin-debug/test/compTest.js",
+		"bin-debug/AssetAdapter.js",
+		"bin-debug/libs/modules/egret/egret.js",
+		"bin-debug/libs/modules/egret/egret.web.js",
+		"bin-debug/libs/modules/eui/eui.js",
+		"bin-debug/libs/modules/game/game.js",
+		"bin-debug/libs/modules/promise/promise.js",
+		"bin-debug/libs/modules/tween/tween.js"
 	]
 }
