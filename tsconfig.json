@@ -2,20 +2,21 @@
     "compilerOptions": {
         "target": "es5",
         "outDir": "bin-debug",
-        "sourceMap": true,
         "experimentalDecorators": true,
+        "downlevelIteration": true,
+        "removeComments": true,
         "lib": [
-            "es5",
-            "dom",
             "es2015",
-            "es2016",
-            "es2017"
+            "dom",
+            "es2015.promise"
         ],
-        "types": [
-        ]
+        "types": []
     },
     "include": [
         "src",
         "libs"
+    ],
+    "exclude": [
+        "node_modules"
     ]
 }

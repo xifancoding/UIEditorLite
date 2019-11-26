@@ -10,14 +10,32 @@
             "type": "chrome",
             "request": "launch",
             // "file": "index.html",
-            "url": "http://192.168.1.33:3000/index.html",
+            "url": "http://localhost:3000/index.html",
             // "runtimeExecutable": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-            // "useBuildInServer": true,
             "sourceMaps": true,
             "webRoot": "${workspaceRoot}",
             "userDataDir": "${tmpdir}",
             "preLaunchTask": "build",            //neet egret start server / run  first
             "port": 5433
+        }
+        ,{
+            "name": "node exe",
+            "type": "node",
+            "request": "launch",
+            "program": "C:\\Program Files (x86)\\Egret\\EgretLauncher\\resources\\app\\engine\\win\\selector.js",
+            "args": [
+                "--max-old-space-size=2000",
+                // "build",
+                // "run",
+                "startserver",
+                "-sourcemap",
+            ],
+            // "runtimeExecutable": "C:\\Program Files (x86)\\Egret\\EgretLauncher\\resources\\app\\engine\\win\\node.exe",
+            "cwd": "${workspaceFolder}",
+            // "preLaunchTask": "build" ,
+            "sourceMaps": true,
+            "stopOnEntry": false,
+            // "outDir": "${workspaceFolder}/bin-debug"
         }
     ]
 }
